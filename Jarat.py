@@ -1,10 +1,11 @@
 import time
+from abc import ABC, abstractmethod
 
 # --------------------------------------------------------------------------------
 # - Jarat: absztrakt alap osztály a járatokhoz
 #   A járatszámot, célállomást és jegyárat tárolja, a jegyárat a setter validálja.
 # --------------------------------------------------------------------------------
-class Jarat:
+class Jarat(ABC):
     def __init__(self, jaratszam: str, celallomas: str, jegyar: float):
         # - _jaratszam: privát járatszám
         # - _celallomas: privát célállomás
@@ -36,9 +37,10 @@ class Jarat:
             raise ValueError("A jegyár nem lehet negatív!")
         self._jegyar = ertek
 
+    @abstractmethod
     def get_info(self) -> str:
         # - absztrakt metódus, a leszármazottaknak kell implementálniuk
-        raise NotImplementedError("get_info() must be implemented by subclasses")
+        pass
 
 
 # --------------------------------------------------------------------------------
